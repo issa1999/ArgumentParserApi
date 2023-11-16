@@ -6,6 +6,7 @@ class Option {
     public:
     Option() ;
     Option(Option&);
+    static bool exists(Option& option); // check if the given Option exists in _Options of class Options
     //enum OptionStatus {MANDATORY, OPTIONAL};
     enum OptionType {BOOLEAN, STRING, NUMBER, REAL, OTHER, NONE};
     void supportMultipleValues() {_haveMultipleValues = true;}
@@ -32,7 +33,7 @@ class Options {
     public:
     int computeOptions(int argc);
     static bool matchesTool(Option option, Tools tool);
-    bool canAddOption(Tools tool, Option option);
+    bool canAddOption(Option option);
     void addNewOption(Tools tool, Option option);
     void registerCommand(
         Option::OptionType type,
